@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const aanbieders = (await getCollection('aanbieders')).sort((a, b) => a.data.order - b.data.order);
+const featured = aanbieders.slice(0, 3);
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const latestPosts = posts.slice(0, 3);
+
+const dateFormatter = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<BaseLayout
+  title="TravelConcurrent — beste aanbieders, beste deals, reisinspiratie"
+  description="TravelConcurrent is het onafhankelijke inspiratieplatform voor reizen: ontdek de beste aanbieders op reisgebied, bespaar op je volgende vakantie en blijf op de hoogte van actuele deals."
+>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow" style="background: rgba(255,255,255,0.15); color: #fff;">Reisinspiratie & besparen op reizen</span>
+      <h1>Vind de beste aanbieders, de beste deals en volop reisinspiratie op één plek</h1>
+      <p class="lede">TravelConcurrent zoekt voor je uit welke reisaanbieders het vertrouwen waard zijn en welke tips écht schelen in de portemonnee — zodat jij zonder gedoe je volgende reis kunt plannen.</p>
+      <div class="hero-actions">
+        <a href="/aanbieders" class="btn btn-primary">Bekijk de aanbieders</a>
+        <a href="/nieuws" class="btn btn-outline">Lees het laatste reisnieuws</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>{aanbieders.length}</strong><span>Uitgelichte aanbieders</span></div>
+        <div><strong>{posts.length}</strong><span>Artikelen bij lancering</span></div>
+        <div><strong>100%</strong><span>Onafhankelijke redactie</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="usp-strip">
+        <div class="usp-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>
+          <div>
+            <h3>Onafhankelijk uitgezocht</h3>
+            <p>Onze redactie beoordeelt aanbieders op prijs, service en betrouwbaarheid, niet op wie het meest betaalt.</p>
+          </div>
+        </div>
+        <div class="usp-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V3h10z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          <div>
+            <h3>Actuele deals &amp; tips</h3>
+            <p>We volgen boekingstrends, regelgeving en prijstrucs, zodat de tips op TravelConcurrent actueel blijven.</p>
+          </div>
+        </div>
+        <div class="usp-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m14.5 9.5-2 5-5 2 2-5z"/></svg>
+          <div>
+            <h3>Reisinspiratie</h3>
+            <p>Van autohuur op Curaçao tot een reis op maat naar Disneyland Paris: inspiratie voor elk soort reiziger.</p>
+          </div>
+        </div>
+        <div class="usp-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3.4-8-6.4-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.6-4 7.6-8 11z"/></svg>
+          <div>
+            <h3>Voor elk budget</h3>
+            <p>Of je nu spaart voor een weekendje weg of een verre reis boekt: wij helpen je slimmer kiezen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt-bg">
+    <div class="container">
+      <span class="eyebrow">Uitgelicht</span>
+      <h2>Aanbieders die de moeite waard zijn</h2>
+      <p class="lede" style="margin-bottom: 32px;">Een selectie van reisaanbieders die we hebben doorgelicht op prijs, service en betrouwbaarheid.</p>
+      <div class="grid grid-3">
+        {featured.map((entry) => (
+          <div class="card">
+            <span class="tag">{entry.data.category}</span>
+            <h3><a href={`/aanbieders/${entry.id}`}>{entry.data.name}</a></h3>
+            <p>{entry.data.summary}</p>
+            <a class="card-link" href={`/aanbieders/${entry.id}`}>Bekijk profiel &rarr;</a>
+          </div>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top: 36px;">
+        <a href="/aanbieders" class="btn btn-outline">Alle aanbieders bekijken</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Nieuws</span>
+      <h2>Het laatste reisnieuws en bespaartips</h2>
+      <p class="lede" style="margin-bottom: 32px;">Actuele artikelen over besparen op reizen, boekstrategieën en reistrends.</p>
+      <div class="grid grid-3">
+        {latestPosts.map((post) => (
+          <div class="card">
+            <span class="meta">{dateFormatter.format(post.data.pubDate)}</span>
+            <h3><a href={`/nieuws/${post.id}`}>{post.data.title}</a></h3>
+            <p>{post.data.description}</p>
+            <a class="card-link" href={`/nieuws/${post.id}`}>Lees verder &rarr;</a>
+          </div>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top: 36px;">
+        <a href="/nieuws" class="btn btn-outline">Alle artikelen bekijken</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt-bg">
+    <div class="container" style="text-align:center;">
+      <h2>Wat is TravelConcurrent precies?</h2>
+      <p class="lede" style="margin: 0 auto 28px;">TravelConcurrent is geen boekingssite en geen reisbureau. We zijn een onafhankelijk platform dat reisaanbieders met elkaar vergelijkt en je meeneemt naar de partij die het beste bij jouw reis past.</p>
+      <a href="/over" class="btn btn-primary">Lees meer over ons</a>
+    </div>
+  </section>
+</BaseLayout>

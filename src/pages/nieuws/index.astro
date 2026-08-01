@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const dateFormatter = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<BaseLayout
+  title="Nieuws — reistips en actuele reisregels"
+  description="Actueel reisnieuws: bespaartips, reisregels en trends, geschreven door de redactie van TravelConcurrent."
+>
+  <section class="section-tight">
+    <div class="container">
+      <span class="eyebrow">Nieuws</span>
+      <h1>Reisnieuws, bespaartips en actuele reisregels</h1>
+      <p class="lede">Alles wat je moet weten om slimmer te boeken en te reizen, overzichtelijk en actueel gehouden.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {posts.map((post) => (
+          <div class="card">
+            <span class="meta">{dateFormatter.format(post.data.pubDate)}</span>
+            <h3><a href={`/nieuws/${post.id}`}>{post.data.title}</a></h3>
+            <p>{post.data.description}</p>
+            <a class="card-link" href={`/nieuws/${post.id}`}>Lees verder &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

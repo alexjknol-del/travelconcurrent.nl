@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const laatstBijgewerkt = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+---
+<BaseLayout
+  title="Privacybeleid"
+  description="Lees hoe TravelConcurrent omgaat met persoonsgegevens."
+>
+  <section class="section prose">
+    <div class="container prose">
+      <span class="eyebrow">Juridisch</span>
+      <h1>Privacybeleid</h1>
+      <p><em>Laatst bijgewerkt: {laatstBijgewerkt}</em></p>
+
+      <p>TravelConcurrent ("wij") hecht waarde aan de privacy van bezoekers van travelconcurrent.nl (de "website"). In dit privacybeleid staat welke persoonsgegevens wij verwerken, waarom, en welke rechten je hebt.</p>
+
+      <h2>Wie is verantwoordelijk?</h2>
+      <p>TravelConcurrent is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit beleid. Voor alle vragen over privacy is TravelConcurrent bereikbaar via <a href="mailto:info@travelconcurrent.nl">info@travelconcurrent.nl</a>.</p>
+
+      <h2>Welke gegevens verwerken we?</h2>
+      <p>De website bevat bewust geen contactformulier, geen inlogfunctie en geen advertentienetwerken. We verwerken daardoor maar een beperkte set gegevens:</p>
+      <ul>
+        <li><strong>E-mailcorrespondentie:</strong> stuur je een e-mail naar info@travelconcurrent.nl, dan verwerken we je naam, e-mailadres en de inhoud van je bericht, uitsluitend om je vraag te kunnen beantwoorden.</li>
+        <li><strong>Technische serverlogs:</strong> onze hostingpartij (Cloudflare) verwerkt automatisch technische gegevens zoals IP-adres, tijdstip van een bezoek en het opgevraagde webadres. Dit gebeurt voor beveiliging, het tegengaan van misbruik en het goed laten functioneren van de website. Wij hebben zelf geen inzage in individuele bezoekersgegevens en gebruiken deze logs niet voor profilering of marketing.</li>
+      </ul>
+
+      <h2>Waarom verwerken we deze gegevens?</h2>
+      <p>De grondslag voor het verwerken van e-mailcorrespondentie is dat dit noodzakelijk is om te reageren op een vraag die je zelf aan ons stelt. De grondslag voor technische serverlogs is ons gerechtvaardigd belang bij een veilige en werkende website.</p>
+
+      <h2>Hoe lang bewaren we gegevens?</h2>
+      <p>E-mailcorrespondentie bewaren we niet langer dan nodig is om je vraag af te handelen en eventuele vervolgvragen te kunnen beantwoorden. Technische serverlogs worden door Cloudflare bewaard conform hun eigen beveiligings- en retentiebeleid.</p>
+
+      <h2>Delen we gegevens met derden?</h2>
+      <p>We verkopen geen persoonsgegevens aan derden. Voor hosting en beveiliging maken we gebruik van Cloudflare, dat als verwerker optreedt voor de technische serverlogs die nodig zijn om de website te laten draaien.</p>
+
+      <h2>Links naar andere websites</h2>
+      <p>Op TravelConcurrent staan links naar de websites van reisaanbieders. Zodra je op zo'n link klikt en de website van een aanbieder bezoekt, geldt het privacybeleid van die aanbieder. Wij zijn niet verantwoordelijk voor de manier waarop andere websites met jouw gegevens omgaan.</p>
+
+      <h2>Jouw rechten</h2>
+      <p>Je hebt het recht om inzage te vragen in de gegevens die we van je hebben, deze te laten corrigeren of verwijderen, en om bezwaar te maken tegen de verwerking ervan. Neem hiervoor contact op via <a href="mailto:info@travelconcurrent.nl">info@travelconcurrent.nl</a>. Ook heb je het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens.</p>
+
+      <h2>Wijzigingen</h2>
+      <p>We kunnen dit privacybeleid van tijd tot tijd aanpassen, bijvoorbeeld wanneer de website nieuwe functionaliteit krijgt. De datum bovenaan deze pagina geeft aan wanneer het beleid voor het laatst is bijgewerkt.</p>
+    </div>
+  </section>
+</BaseLayout>

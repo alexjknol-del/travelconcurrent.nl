@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Is TravelConcurrent zelf een reisbureau of boekingssite?',
+    a: 'Nee. TravelConcurrent is een onafhankelijk inspiratie- en vergelijkingsplatform. Je boekt niet bij ons, maar rechtstreeks bij de aanbieder die je op onze site tegenkomt.',
+  },
+  {
+    q: 'Hoe kiezen jullie welke aanbieders op de site staan?',
+    a: 'We kijken naar prijs-kwaliteitverhouding, service en betrouwbaarheid, waaronder relevante keurmerken zoals ANVR, SGR of het Calamiteitenfonds. We nemen alleen aanbieders op waar de redactie zelf achter staat.',
+  },
+  {
+    q: 'Kan een aanbieder betalen om op TravelConcurrent te staan?',
+    a: 'Een aanbieder kan geen betere beoordeling kopen. TravelConcurrent kan wel een commerciële samenwerking hebben met een deel van de uitgelichte aanbieders; dit heeft geen invloed op de inhoud van onze redactionele nieuwsartikelen.',
+  },
+  {
+    q: 'Waarom staat er niet meteen een prijs op elke aanbiederspagina?',
+    a: 'Reisprijzen veranderen voortdurend door seizoen, beschikbaarheid en boekingsmoment. Om je geen verouderde prijzen voor te schotelen, verwijzen we voor actuele tarieven altijd door naar de website van de aanbieder zelf.',
+  },
+  {
+    q: 'Ik mis een aanbieder die volgens mij niet mag ontbreken. Wat nu?',
+    a: 'Laat het ons weten via de contactpagina. We bekijken elke suggestie op basis van dezelfde criteria als onze bestaande selectie.',
+  },
+  {
+    q: 'Gebruikt TravelConcurrent mijn gegevens voor advertenties?',
+    a: 'Nee. De website heeft geen contactformulier, geen tracking-cookies en geen advertentienetwerken. Meer hierover staat in ons privacybeleid en cookiebeleid.',
+  },
+];
+---
+<BaseLayout
+  title="Veelgestelde vragen"
+  description="Antwoorden op de meest gestelde vragen over TravelConcurrent, onze aanbieders en hoe het platform werkt."
+>
+  <section class="section">
+    <div class="container prose">
+      <span class="eyebrow">Veelgestelde vragen</span>
+      <h1>Veelgestelde vragen</h1>
+      <p class="lede">Een kort antwoord op de vragen die we het vaakst krijgen over TravelConcurrent.</p>
+
+      <div style="margin-top: 32px;">
+        {faqs.map((item) => (
+          <div class="card" style="margin-bottom: 18px;">
+            <h3>{item.q}</h3>
+            <p style="margin:0;">{item.a}</p>
+          </div>
+        ))}
+      </div>
+
+      <p style="margin-top: 28px;">Staat je vraag er niet bij? <a href="/contact">Mail de redactie</a>, we helpen graag verder.</p>
+    </div>
+  </section>
+</BaseLayout>
