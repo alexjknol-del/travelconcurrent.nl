@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Pagina niet gevonden" description="Deze pagina bestaat niet (meer)." noindex={true}>
+  <section class="section" style="text-align:center;">
+    <div class="container">
+      <span class="eyebrow">404</span>
+      <h1>Deze pagina bestaat niet (meer)</h1>
+      <p class="lede" style="margin: 0 auto 28px;">De pagina die je zoekt is verplaatst of bestaat niet. Ga terug naar de homepage of bekijk het laatste reisnieuws.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="/" class="btn btn-primary">Naar de homepage</a>
+        <a href="/nieuws" class="btn btn-outline">Bekijk het nieuws</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

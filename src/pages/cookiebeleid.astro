@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const laatstBijgewerkt = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+---
+<BaseLayout
+  title="Cookiebeleid"
+  description="Lees welke cookies TravelConcurrent wel en niet gebruikt."
+>
+  <section class="section">
+    <div class="container prose">
+      <span class="eyebrow">Juridisch</span>
+      <h1>Cookiebeleid</h1>
+      <p><em>Laatst bijgewerkt: {laatstBijgewerkt}</em></p>
+
+      <p>TravelConcurrent plaatst geen tracking-cookies, geen advertentiecookies en geen analytische cookies. Er is bewust gekozen voor een website zonder contactformulier, zonder inlogfunctie en zonder externe advertentienetwerken, waardoor er ook geen cookies nodig zijn voor die doeleinden.</p>
+
+      <h2>Wat dan wel?</h2>
+      <p>Onze hostingpartij Cloudflare kan, uitsluitend voor het beveiligen van de website tegen misbruik (zoals geautomatiseerde aanvallen), technisch noodzakelijke functionaliteit gebruiken die niet kwalificeert als een cookie waarvoor toestemming vereist is onder de Telecommunicatiewet, omdat deze functionaliteit strikt noodzakelijk is voor het functioneren en beveiligen van de website.</p>
+
+      <h2>Links naar aanbieders</h2>
+      <p>Wanneer je vanaf TravelConcurrent doorklikt naar de website van een aanbieder, kan die website eigen cookies plaatsen. Dat gebeurt buiten TravelConcurrent om en valt onder het cookiebeleid van de betreffende aanbieder.</p>
+
+      <h2>Wijzigingen</h2>
+      <p>Mocht TravelConcurrent in de toekomst functionaliteit toevoegen waarvoor wel cookies nodig zijn (bijvoorbeeld anonieme bezoekstatistieken), dan wordt dit cookiebeleid daarop aangepast en waar wettelijk vereist om toestemming gevraagd.</p>
+
+      <h2>Vragen</h2>
+      <p>Vragen over dit cookiebeleid? Mail naar <a href="mailto:info@travelconcurrent.nl">info@travelconcurrent.nl</a>.</p>
+    </div>
+  </section>
+</BaseLayout>

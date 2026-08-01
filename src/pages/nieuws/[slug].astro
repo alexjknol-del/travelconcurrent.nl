@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, pubDate, updatedDate, author } = entry.data;
+const dateFormatter = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<BaseLayout title={title} description={description}>
+  <article>
+    <section class="section-tight">
+      <div class="container prose">
+        <p class="breadcrumbs"><a href="/">Home</a> / <a href="/nieuws">Nieuws</a></p>
+        <h1>{title}</h1>
+        <div class="byline">
+          <img src="/afbeeldingen/avatar-merel.svg" alt={`Avatar van ${author}`} width="44" height="44" />
+          <div>
+            <div class="byline-name"><a href="/auteur">{author}</a></div>
+            <div class="byline-meta">
+              {dateFormatter.format(pubDate)}
+              {updatedDate && <> · bijgewerkt op {dateFormatter.format(updatedDate)}</>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prose">
+      <div class="container prose">
+        <Content />
+      </div>
+    </section>
+  </article>
+</BaseLayout>

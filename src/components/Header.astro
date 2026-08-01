@@ -1,0 +1,39 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/over', label: 'Over' },
+  { href: '/nieuws', label: 'Nieuws' },
+  { href: '/aanbieders', label: 'Aanbieders' },
+  { href: '/contact', label: 'Contact' },
+];
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="32" fill="#0E7C86"/>
+        <path d="M18 34 L46 20 L40 46 L33 36 L24 40 Z" fill="#FF6B4A"/>
+        <path d="M18 34 L46 20 L33 36 Z" fill="#ffffff" opacity="0.9"/>
+      </svg>
+      <span>TravelConcurrent</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu openen" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="nav" id="nav">
+      {navItems.map((item) => (
+        <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!isOpen));
+  });
+</script>
