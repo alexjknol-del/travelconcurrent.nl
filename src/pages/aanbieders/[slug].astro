@@ -16,7 +16,7 @@ const { name, category, website, summary } = entry.data;
 ---
 <BaseLayout title={`${name} — ${category}`} description={summary}>
   <section class="section-tight">
-    <div class="container">
+    <div class="container prose">
       <p class="breadcrumbs"><a href="/">Home</a> / <a href="/aanbieders">Aanbieders</a> / {name}</p>
       <span class="eyebrow">{category}</span>
       <h1>{name}</h1>
@@ -24,7 +24,7 @@ const { name, category, website, summary } = entry.data;
     </div>
   </section>
 
-  <section class="section prose">
+  <section class="section">
     <div class="container prose">
       <Content />
     </div>
