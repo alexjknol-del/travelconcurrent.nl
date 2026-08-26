@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const partners = [
+  {
+    naam: 'Travel Essence',
+    url: 'https://www.travelessence.nl/',
+    beschrijving: 'Travel Essence organiseert reizen op maat naar bestemmingen buiten Europa.',
+    anchor: 'Travel Essence',
+  },
+  {
+    naam: 'Little America',
+    url: 'https://www.littleamerica.nl/',
+    beschrijving: 'Little America is gespecialiseerd in reizen naar de Verenigde Staten en Canada.',
+    anchor: 'Little America',
+  },
+  {
+    naam: 'Domstadboot',
+    url: 'https://domstadboot.nl/',
+    beschrijving: 'Domstadboot verzorgt sloeptochten met schipper door de grachten van Utrecht.',
+    anchor: 'bootje varen utrecht',
+  },
+  {
+    naam: 'Milieustickerkopen.nl',
+    url: 'https://milieustickerkopen.nl/milieusticker-frankrijk',
+    beschrijving: "Milieustickerkopen.nl helpt bij het aanvragen van de Franse milieusticker (Crit'Air) voor een reis naar Frankrijk.",
+    anchor: 'Franse milieusticker',
+  },
+  {
+    naam: 'Horecarama',
+    url: 'https://www.horecarama.nl/klein-materiaal/voedsel-bakken-en-dozen/plastic-bakjes/',
+    beschrijving: 'Horecarama levert plastic afhaalbakjes, onder meer geschikt voor onderweg tijdens een reis.',
+    anchor: 'Plastic afhaalbakjes',
+  },
+  {
+    naam: 'Travel Your Memories',
+    url: 'https://travelyourmemories.nl/blogs/rondreis-japan-3-weken/',
+    beschrijving: 'Travel Your Memories beschrijft een rondreis van drie weken door Japan.',
+    anchor: 'Rondreis Japan 3 weken',
+  },
+];
+---
+<BaseLayout
+  title="Partners — TravelConcurrent"
+  description="Partners en bronnen waar TravelConcurrent naar verwijst."
+>
+  <section class="section-tight">
+    <div class="container">
+      <span class="eyebrow">Partners</span>
+      <h1>Partners en bronnen</h1>
+      <p class="lede">TravelConcurrent verwijst hier naar externe partners en bronnen.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {partners.map((partner) => (
+          <div class="card">
+            <h3><a href={partner.url} target="_blank" rel="noopener">{partner.naam}</a></h3>
+            <p>{partner.beschrijving}</p>
+            <a class="card-link" href={partner.url} target="_blank" rel="noopener">{partner.anchor}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
