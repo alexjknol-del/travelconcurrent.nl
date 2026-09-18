@@ -14,7 +14,7 @@ const aanbieders = (await getCollection('aanbieders')).sort((a, b) => a.data.ord
       <h1>De beste aanbieders op reisgebied</h1>
       <p class="lede">Elke aanbieder op deze pagina is er niet zomaar bij gezet: we kijken naar specialisme, service en betrouwbaarheid voor we een profiel opnemen.</p>
       <div class="disclosure">
-        TravelConcurrent kan een commerciële samenwerking hebben met een deel van onderstaande aanbieders. Links naar aanbieders zijn nofollow.
+        TravelConcurrent kan een commerciële samenwerking hebben met een deel van onderstaande aanbieders.
       </div>
     </div>
   </section>
@@ -27,6 +27,9 @@ const aanbieders = (await getCollection('aanbieders')).sort((a, b) => a.data.ord
             <span class="tag">{entry.data.category}</span>
             <h3><a href={`/aanbieders/${entry.id}`}>{entry.data.name}</a></h3>
             <p>{entry.data.summary}</p>
+            {entry.id === 'uitmetkorting' && (
+              <p><a href="https://www.uitmetkorting.nl/avonturenboerderij-molenwaard/" target="_blank" rel="noopener">Voordelig naar Avonturenboerderij Molenwaard</a></p>
+            )}
             <a class="card-link" href={`/aanbieders/${entry.id}`}>Bekijk profiel &rarr;</a>
           </div>
         ))}
